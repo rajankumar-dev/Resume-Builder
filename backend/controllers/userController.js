@@ -9,6 +9,7 @@ const generateToken = (user) => {
   });
 };
 
+//Register User
 export const registerUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -89,7 +90,7 @@ export const registerUser = async (req, res) => {
   }
 };
 
-//Login user
+//Login User
 export const loginUser = async (req, res) => {
     try {
         const {email, password} = req.body;
@@ -122,7 +123,7 @@ export const loginUser = async (req, res) => {
     }
 };
 
-//Get user profile
+//Get User profile
 export const getUserProfile = async (res, req) => {
     try {
         const user = await User.findById(req.user.id).select("-password")
