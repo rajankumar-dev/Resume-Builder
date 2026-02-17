@@ -107,17 +107,10 @@ export const loginUser = async (req, res) => {
             return res.status(400).json({message: "Invalid Password"});
         }
 
-        //token generate
-        const token = jwt.sign(
-            {id: user._id},
-            "SEctertkey",
-            {expiresIn: "7d"}
-        )
-
         //Success response
         res.json({
             message: "Login success",
-            token,
+            token: generateToken(newUser._id),
             user: {
                 id: user._id,
                 email: user.email,
@@ -129,3 +122,18 @@ export const loginUser = async (req, res) => {
     }
 };
 
+//Get user profile
+export const getUserProfile = async (res, req) => {
+    try {
+        const user = await User.findById(req.user.id).select("-password")
+        if(!user){
+            return res.status(404).json({message: "User not found"})
+        }
+        res.json(user)
+    } catch (e) {
+        res.status(500).json({ 
+        message: "Server error",
+        error: e.message
+    });
+    }
+}
