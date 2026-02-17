@@ -13,7 +13,8 @@ export const product = async (req, res, next) => {
         }else {
             res.status(401).json({ message: "Unauthorized. No token provided." })
         }
-    } catch (error) {
+    } 
+    catch (error) {
         res.status(500).json({ message: "Token verification failed", error: error.message });
     }
 }
