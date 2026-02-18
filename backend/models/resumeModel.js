@@ -31,6 +31,7 @@ const resumeSchema = new mongoose.Schema({
         location: String,
         website: String
     },
+    
     education: [
         {
             institution: String,
@@ -39,6 +40,7 @@ const resumeSchema = new mongoose.Schema({
             endDate: String,
         },
     ],
+
     workExperience: [
         {
             company: String,
@@ -48,6 +50,7 @@ const resumeSchema = new mongoose.Schema({
             description: String
         },
     ],
+
     skills: [
         {
             name: String, 
