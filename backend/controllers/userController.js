@@ -1,4 +1,4 @@
-import User from "../models/userModel";
+import User from "../models/userModel.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -111,7 +111,7 @@ export const loginUser = async (req, res) => {
         //Success response
         res.json({
             message: "Login success",
-            token: generateToken(newUser._id),
+            token: generateToken(user._id),
             user: {
                 id: user._id,
                 email: user.email,
