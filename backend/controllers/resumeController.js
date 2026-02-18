@@ -101,10 +101,27 @@ export const createResume = async (req, res) => {
     try {
         const resume = await Resume.findOne({_Id: req.params.id, userID: req.user._id})
         if(!resume){
-            return res.status(400).json({ message: "Resume not found"});
+            return res.status(404).json({ message: "Resume not found"});
         }
         res.json(resume)
     } catch (error) {
         res.status(500).json({ message: "Failed to get resumes", error: error.message });
+    }
+ }
+
+ //update resume
+ export const updataResume = async (req, res) => {
+    try {
+        const resume = await Resume.findOne({_Id: req.params.id, userID: req.user._id})
+        if(!resume){
+            return res.status(404).json({ message: "Resume not found or not authorized"});
+        }
+        //Merg updated resume
+        Object.assign(resume, req.body)
+        //Save updatad resume
+        const savedResume = await resume.save();
+        res.json(savedResume)
+    } catch (error) {
+        res.status(500).json({ message: "Failed to update resumes", error: error.message });
     }
  }
