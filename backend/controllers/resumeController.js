@@ -79,7 +79,8 @@ export const createResume = async (req, res) => {
         })
         res.status(201).json(newResume)
 
-} catch (error) {
+} 
+catch (error) {
     res.status(500).json({ message: "Failed to create resume", error: error.message });
 }
 }
@@ -91,7 +92,8 @@ export const createResume = async (req, res) => {
             updatedAt: -1
         });
         res.json(resume)
-    } catch (error) {
+    } 
+    catch (error) {
         res.status(500).json({ message: "Failed to get resumes", error: error.message });
     }
  }
@@ -104,7 +106,8 @@ export const createResume = async (req, res) => {
             return res.status(404).json({ message: "Resume not found"});
         }
         res.json(resume)
-    } catch (error) {
+    } 
+    catch (error) {
         res.status(500).json({ message: "Failed to get resumes", error: error.message });
     }
  }
@@ -113,6 +116,7 @@ export const createResume = async (req, res) => {
  export const updataResume = async (req, res) => {
     try {
         const resume = await Resume.findOne({_Id: req.params.id, userId: req.user._id})
+
         if(!resume){
             return res.status(404).json({ message: "Resume not found or not authorized"});
         }
@@ -121,7 +125,8 @@ export const createResume = async (req, res) => {
         //Save updatad resume
         const savedResume = await resume.save();
         res.json(savedResume)
-    } catch (error) {
+    } 
+    catch (error) {
         res.status(500).json({ message: "Failed to update resumes", error: error.message });
     }
  }
@@ -160,7 +165,8 @@ export const createResume = async (req, res) => {
             return res.status(404).json({ message: "Resume not found or not authorized"});
         }
         res.json({ message: "Resume deleted successfully"})
-    } catch (error) {
+    } 
+    catch (error) {
         res.status(500).json({ message: "Failed to delete resume", error: error.message });
     }
  }
