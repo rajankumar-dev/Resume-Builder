@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import 'dotenv/config'
 import { connectDb } from './config/db.js';
+import userRoutes from './routers/userRoutes.js';
 
 const app = express();
 const PORT = 4000;
@@ -12,6 +13,7 @@ app.use(cors())
 connectDb()
 //Middleware
 app.use(express.json())
+app.use('/api/auth', userRoutes)
 
 //route
 app.get('/', (req, res) => {
