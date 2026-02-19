@@ -1,5 +1,5 @@
 import Resume from '../models/resumeModel.js';
-import {path} from 'fs'
+import path from 'fs'
 
 //Create Resume
 // DATA FOR CREATEREMUNE CONTROLLER
@@ -75,7 +75,8 @@ export const createResume = async (req, res) => {
             userId: req.user._id,
             title,
             ...defaultResumeData,
-            ...req.body
+            ...req.body,
+            user: req.user
         })
         res.status(201).json(newResume)
 
