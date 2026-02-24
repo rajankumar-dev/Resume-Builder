@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
   },
 });
 
-// Add a request interceptor to include the token in headers
+// Add a request Interceptor to include the Token in headers
 axiosInstance.interceptors.request.use(
   (config) => {
     const accessToken = localStorage.getItem("token");
@@ -23,7 +23,7 @@ axiosInstance.interceptors.request.use(
   },
 );
 
-// Response interceptor
+// Response Interceptor
 axiosInstance.interceptors.response.use(
   (response) => {
     return response;
