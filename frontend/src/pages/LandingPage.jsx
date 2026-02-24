@@ -1,9 +1,14 @@
 import { LayoutTemplate, Menu, X } from 'lucide-react';
 import { landingPageStyles } from '../assets/dummystyles.js';
 import { useState } from 'react';
+import { UserContext } from '../context/UserContext.jsx';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const LandingPage = () => {
-
+  const { user } = useContext(UserContext);
+  const navigate = useNavigate();
   const [MobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
