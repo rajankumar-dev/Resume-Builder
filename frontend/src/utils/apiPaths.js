@@ -1,6 +1,6 @@
 export const BASE_URL = "http://localhost:4000";
 
-//Routes
+//Rout3s
 export const API_PATHS = {
   auth: {
     login: "/api/auth/login",
